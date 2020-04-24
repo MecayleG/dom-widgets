@@ -32,14 +32,101 @@ describe("the calculate bill factory function", function(){
 		
 		assert.equal(30, firstWidget.getTotalFor30());
 	});
-	it("total should be updated when call is made at 2.75", function(){
+	it("total should be updated when 3 calls are made @ 2.75", function(){
 		let firstWidget = calculateBill();
 
 		firstWidget.setTheSmsCost(0.75);
 		firstWidget.setTheCallCost(2.75);
 
-
+		firstWidget.callString();
+		firstWidget.callString();
+		firstWidget.callString();
 		
-		assert.equal(, firstWidget.getTotalFor30());
+		assert.equal(8.25, firstWidget.mainTotal());
+		assert.equal(2.75, firstWidget.getTheCallCost());
+		assert.equal(0.75, firstWidget.getTheSmsCost());
+	});
+	it("total should be updated when 4 sms's are made @ 0.75", function(){
+		let firstWidget = calculateBill();
+
+		firstWidget.setTheSmsCost(0.75);
+		firstWidget.setTheCallCost(2.75);
+
+		firstWidget.smsString();
+		firstWidget.smsString();
+		firstWidget.smsString();
+		firstWidget.smsString();
+		
+		assert.equal(3.00, firstWidget.mainTotal());
+		assert.equal(2.75, firstWidget.getTheCallCost());
+		assert.equal(0.75, firstWidget.getTheSmsCost());
+	});
+	it("total should be updated when 3 calls are made @ 2.75 and 4 sms's are made @ 0.75.", function(){
+		let firstWidget = calculateBill();
+
+		firstWidget.setTheSmsCost(0.75);
+		firstWidget.setTheCallCost(2.75);
+
+		firstWidget.smsString();
+		firstWidget.smsString();
+		firstWidget.smsString();
+		firstWidget.smsString();
+		firstWidget.callString();
+		firstWidget.callString();
+		firstWidget.callString();
+		
+		assert.equal(11.25, firstWidget.mainTotal());
+		assert.equal(2.75, firstWidget.getTheCallCost());
+		assert.equal(0.75, firstWidget.getTheSmsCost());
+	});
+	it("the total should be orange when it exceeds 20", function(){
+		let firstWidget = calculateBill();
+
+		firstWidget.setTheSmsCost(0.75);
+		firstWidget.setTheCallCost(2.75);
+		firstWidget.setTotalFor20(20);
+		firstWidget.setTotalFor30(30);
+
+		firstWidget.smsString();
+		firstWidget.smsString();
+		firstWidget.smsString();
+		firstWidget.smsString();
+		firstWidget.smsString();
+		firstWidget.callString();
+		firstWidget.callString();
+		firstWidget.callString();
+		firstWidget.callString();
+		firstWidget.callString();
+		firstWidget.callString();
+		
+		assert.equal('orange', firstWidget.colorForTotal());	
+	});
+	it("the total should be red when it exceeds 30", function(){
+		let firstWidget = calculateBill();
+
+		firstWidget.setTheSmsCost(0.75);
+		firstWidget.setTheCallCost(2.75);
+		firstWidget.setTotalFor20(20);
+		firstWidget.setTotalFor30(30);
+
+		firstWidget.smsString();
+		firstWidget.smsString();
+		firstWidget.smsString();
+		firstWidget.smsString();
+		firstWidget.smsString();
+		firstWidget.callString();
+		firstWidget.callString();
+		firstWidget.callString();
+		firstWidget.callString();
+		firstWidget.callString();
+		firstWidget.callString();
+		firstWidget.callString();
+		firstWidget.callString();
+		firstWidget.callString();
+		firstWidget.callString();
+		firstWidget.callString();
+		
+		assert.equal('red', firstWidget.colorForTotal());
+		
 	});
 });
