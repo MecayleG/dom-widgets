@@ -1,12 +1,10 @@
-function calculateBill(){
-	var costForCall = 0;
-	var costForSms = 0;
-	var exceed20 = 0;
-	var exceed30 = 0;
+function CalculateBill(){
+	var costForCall = 2.75;
+	var costForSms = 0.75;
+	var exceed20 = 20;
+	var exceed30 = 30;
 	var callsTotal = 0;
 	var smsTotal = 0;
-	
-
 
 	function setTheCallCost(callPrice){
 		costForCall = callPrice;
