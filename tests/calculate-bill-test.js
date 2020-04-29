@@ -79,7 +79,7 @@ describe("the calculate bill factory function", function(){
 		assert.equal(2.75, firstWidget.getTheCallCost());
 		assert.equal(0.75, firstWidget.getTheSmsCost());
 	});
-	it("the total should be orange when it exceeds 20", function(){
+	it("the total should be ORANGE when it exceeds 20", function(){
 		let firstWidget = CalculateBill();
 
 		firstWidget.setTheSmsCost(0.75);
@@ -101,7 +101,7 @@ describe("the calculate bill factory function", function(){
 		
 		assert.equal('orange', firstWidget.colorForTotal());	
 	});
-	it("the total should be red when it exceeds 30", function(){
+	it("the total should be RED when it exceeds 30", function(){
 		let firstWidget = CalculateBill();
 
 		firstWidget.setTheSmsCost(0.75);

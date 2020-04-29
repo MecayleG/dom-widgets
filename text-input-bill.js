@@ -46,6 +46,14 @@ function TextBill(){
 	function wordSms(){
 		totalSms += smsIs;
 	}
+	function totalColor(){
+		if(overallTotal() >= getLimitTwo()){
+			return "red"
+		}
+		if(overallTotal() >= getLimitOne()){
+			return "orange"
+		}
+	}
 	
 	return{
 		aCall,
@@ -60,6 +68,7 @@ function TextBill(){
 		wordCall,
 		wordSms,
 		getTotalForCalls,
-		getTotalForSms
+		getTotalForSms,
+		totalColor
 		}
 }

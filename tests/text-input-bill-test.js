@@ -84,5 +84,72 @@ describe("the text input bill factory function", function(){
 		assert.equal(0.75, inputBill.getASms());
 		
 	});
+	it("total color should change to ORANGE when equal to or over 30", function(){
+		let inputBill = TextBill();
+
+		inputBill.aSms(0.75);
+		inputBill.aCall(2.75);
+		inputBill.limitOne(30);
+		inputBill.limitTwo(50);
+
+		inputBill.wordSms();
+		inputBill.wordSms();
+		inputBill.wordSms();
+		inputBill.wordSms();
+		inputBill.wordCall();
+		inputBill.wordCall();
+		inputBill.wordCall();
+		inputBill.wordSms();
+		inputBill.wordSms();
+		inputBill.wordSms();
+		inputBill.wordSms();
+		inputBill.wordCall();
+		inputBill.wordCall();
+		inputBill.wordCall();
+		inputBill.wordSms();
+		inputBill.wordSms();
+		inputBill.wordSms();
+		inputBill.wordCall();
+		inputBill.wordCall();
+		
+
+		assert.equal("orange", inputBill.totalColor());
+	});
+	it("total color should change to RED when equal to or over 50", function(){
+		let inputBill = TextBill();
+
+		inputBill.aSms(0.75);
+		inputBill.aCall(2.75);
+		inputBill.limitOne(30);
+		inputBill.limitTwo(50);
+
+		
+		inputBill.wordSms();
+		inputBill.wordSms();
+		inputBill.wordSms();
+		inputBill.wordSms();
+		inputBill.wordSms();
+		inputBill.wordSms();
+		inputBill.wordCall();
+		inputBill.wordCall();
+		inputBill.wordCall();
+		inputBill.wordCall();
+		inputBill.wordCall();
+		inputBill.wordCall();
+		inputBill.wordCall();
+		inputBill.wordCall();
+		inputBill.wordCall();
+		inputBill.wordCall();
+		inputBill.wordCall();
+		inputBill.wordCall();
+		inputBill.wordCall();
+		inputBill.wordCall();
+		inputBill.wordCall();
+		inputBill.wordCall();
+		inputBill.wordCall();
+		inputBill.wordCall();
+
+		assert.equal("red", inputBill.totalColor());
+	});
 
 });
